@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <string>
+#include <vector>
 using namespace std;
 
 int Priority(char a){
@@ -11,7 +12,17 @@ int Priority(char a){
     return 0;
 }
 
-long double Calculate(string s) {
+long double DoOne(long double a, long double b, char c) {
+    if (c == '-')
+        return a - b;
+    if (c == '+')
+        return a + b;
+    if (c == '/')
+        return a / b;
+    return a * b;
+}
+
+long double Calculate(const string &s) {
     vector <long double> numbers;
     vector <char> operators;
 
@@ -31,17 +42,7 @@ long double Calculate(string s) {
                 numbers.pop_back();
                 char op = operators.back();
                 operators.pop_back();
-                if (op == '+') {
-                    numbers.push_back(a + b);
-                } else if (op == '-') {
-                    numbers.push_back(a - b);
-                }
-                else if (op == '/') {
-                    numbers.push_back(a / b);
-                }
-                else {
-                    numbers.push_back(a * b);
-                }
+                numbers.push_back(DoOne(a, b, op));
             }
             operators.push_back(x);
         }
@@ -53,17 +54,7 @@ long double Calculate(string s) {
                 numbers.pop_back();
                 char op = operators.back();
                 operators.pop_back();
-                if (op == '+') {
-                    numbers.push_back(a + b);
-                } else if (op == '-') {
-                    numbers.push_back(a - b);
-                }
-                else if (op == '/') {
-                    numbers.push_back(a / b);
-                }
-                else {
-                    numbers.push_back(a * b);
-                }
+                numbers.push_back(DoOne(a, b, op));
             }
             operators.pop_back();
         }
@@ -84,17 +75,7 @@ long double Calculate(string s) {
         numbers.pop_back();
         char op = operators.back();
         operators.pop_back();
-        if (op == '+') {
-            numbers.push_back(a + b);
-        } else if (op == '-') {
-            numbers.push_back(a - b);
-        }
-        else if (op == '/') {
-            numbers.push_back(a / b);
-        }
-        else {
-            numbers.push_back(a * b);
-        }
+        numbers.push_back(DoOne(a, b, op));
     }
     return numbers[0];
 }

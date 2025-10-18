@@ -1,5 +1,5 @@
 #pragma once
-#include <bits/stdc++.h>
+#include <string>
 using namespace std;
 
-long double Calculate(string s);
+long double Calculate(const string &s);
