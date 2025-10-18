@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <string>
+#include <iostream>
+#include <iomanip>
 #include "calculator.h"
 using namespace std;
 
